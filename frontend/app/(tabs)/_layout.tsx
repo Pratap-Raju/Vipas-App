@@ -1,8 +1,14 @@
 import { Tabs } from 'expo-router';
 import { Circle, Briefcase, BarChart2, Trophy, User } from 'lucide-react-native';
 import { View, Platform } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export default function TabsLayout() {
+  const insets = useSafeAreaInsets();
+  const baseBottomPadding = Platform.OS === 'ios' ? 18 : 12;
+  const tabPaddingBottom = Math.max(baseBottomPadding, insets.bottom + 4);
+  const tabBarHeight = 50 + tabPaddingBottom;
+
   return (
     <Tabs
       screenOptions={{
@@ -10,8 +16,8 @@ export default function TabsLayout() {
         tabBarStyle: {
           backgroundColor: '#09090B',
           borderTopWidth: 0,
-          height: Platform.OS === 'ios' ? 95 : 75,
-          paddingBottom: Platform.OS === 'ios' ? 35 : 20,
+          height: tabBarHeight,
+          paddingBottom: tabPaddingBottom,
           paddingTop: 15,
           elevation: 0,
           shadowOpacity: 0,
