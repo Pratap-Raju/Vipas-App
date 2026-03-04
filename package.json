@@ -1,4 +1,6 @@
 {
+  "name": "Vipas-App",
+  "version": "1.0.0",
   "scripts": {
     "backend": "cd backend && bun run dev",
     "backend:tunnel": "cd backend && bun run dev:tunnel",
