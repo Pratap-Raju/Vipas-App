@@ -9,6 +9,7 @@ import { ErrorBoundary } from './error-boundary';
 import { AuthProvider, useAuth } from '@/lib/auth';
 import { useEffect } from 'react';
 import React from 'react';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 function RootLayoutContent() {
   const { colorScheme } = useColorScheme();
@@ -48,9 +49,11 @@ function RootLayoutContent() {
 export default function RootLayout() {
   return (
     <ErrorBoundary>
-      <AuthProvider>
-        <RootLayoutContent />
-      </AuthProvider>
+      <SafeAreaProvider>
+        <AuthProvider>
+          <RootLayoutContent />
+        </AuthProvider>
+      </SafeAreaProvider>
     </ErrorBoundary>
   );
 }
